@@ -9,6 +9,7 @@ import hotel.entity.CustomerEntity;
 import hotel.repository.RepositoryFactory;
 import hotel.repository.custom.CustomerRepository;
 import hotel.service.custom.CustomerService;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,22 +31,67 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String updateCustomer(CustomerDto customerDto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (customerRepository.update(new CustomerEntity(customerDto.getCustID(), customerDto.getCustTitle(), customerDto.getCustName(), customerDto.getNIC(), customerDto.getDOB(), customerDto.getMobileNumber(), customerDto.getCustAddress(), customerDto.getCity(), customerDto.getProvince(), customerDto.getPostalCode()))) {
+            return "SuccessFully Updated";
+        } else {
+            return "Fail";
+        }
     }
 
     @Override
     public String deleteCustomer(CustomerDto customerDto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        CustomerEntity customerEntity = new CustomerEntity();
+        customerEntity.setCustID(customerDto.getCustID());
+        if (customerRepository.delete(customerEntity)) {
+            return "SuccessFully Deleted";
+        } else {
+            return "Fail";
+        }
     }
 
     @Override
     public CustomerDto getCustomer(String id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        CustomerEntity customerEntity = customerRepository.get(id);
+        if (customerEntity != null) {
+            return new CustomerDto(
+                    customerEntity.getCustID(),
+                    customerEntity.getCustTitle(),
+                    customerEntity.getCustName(),
+                    customerEntity.getNIC(),
+                    customerEntity.getDOB(),
+                    customerEntity.getMobileNumber(),
+                    customerEntity.getCustAddress(),
+                    customerEntity.getCity(),
+                    customerEntity.getProvince(),
+                    customerEntity.getPostalCode());
+
+        } else {
+            return null;
+        }
     }
 
     @Override
     public List<CustomerDto> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        List<CustomerDto> customerDtos = new ArrayList<>();
+        List<CustomerEntity> CustomerEntities = customerRepository.getAll();
+
+        for (CustomerEntity e : CustomerEntities) {
+            customerDtos.add(new CustomerDto(
+                    e.getCustID(),
+                    e.getCustTitle(),
+                    e.getCustName(),
+                    e.getNIC(),
+                    e.getDOB(),
+                    e.getMobileNumber(),
+                    e.getCustAddress(),
+                    e.getCity(),
+                    e.getProvince(),
+                    e.getPostalCode())
+            );
+        }
+
+        return customerDtos;
     }
 
 }

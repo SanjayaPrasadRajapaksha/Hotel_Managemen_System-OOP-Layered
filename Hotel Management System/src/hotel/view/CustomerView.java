@@ -6,9 +6,11 @@ package hotel.view;
 
 import hotel.controller.CustomerController;
 import hotel.dto.CustomerDto;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,11 +18,12 @@ import javax.swing.JOptionPane;
  */
 public class CustomerView extends javax.swing.JFrame {
 
-    CustomerController customerController;
+    final CustomerController customerController;
 
     public CustomerView() {
         customerController = new CustomerController();
         initComponents();
+        loadTable();
     }
 
     /**
@@ -81,7 +84,7 @@ public class CustomerView extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Customer");
 
@@ -141,9 +144,19 @@ public class CustomerView extends javax.swing.JFrame {
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         tblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,6 +169,11 @@ public class CustomerView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDataMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblData);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -180,28 +198,25 @@ public class CustomerView extends javax.swing.JFrame {
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtZip)
-                    .addComponent(txtProvince)
-                    .addComponent(txtCity)
-                    .addComponent(txtAddress)
-                    .addComponent(txtContact)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtNIC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDOB)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                                .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtZip, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                        .addComponent(txtProvince, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtCity, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtAddress, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtContact, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtNIC, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtDOB, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,14 +272,14 @@ public class CustomerView extends javax.swing.JFrame {
                             .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnDelete)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,6 +296,18 @@ public class CustomerView extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveCustomer();
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void tblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDataMouseClicked
+        searchCustomer();
+    }//GEN-LAST:event_tblDataMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        UpdateCustomer();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        deleteCustomer();
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,12 +384,125 @@ public class CustomerView extends javax.swing.JFrame {
 
             String result = customerController.saveCustomer(customerDto);
             JOptionPane.showMessageDialog(this, result);
-
+            clear();
+            loadTable();
         } catch (Exception ex) {
             Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
 
         }
 
+    }
+
+    private void loadTable() {
+        try {
+            String[] colums = {"Customer ID", "Name", "NIC", "Contact", "Address"};
+            DefaultTableModel defaultTableModel = new DefaultTableModel(colums, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+
+            };
+            tblData.setModel(defaultTableModel);
+
+            List<CustomerDto> dtos = customerController.getAll();
+
+            for (CustomerDto e : dtos) {
+                Object rows[] = {
+                    e.getCustID(),
+                    e.getCustTitle() + " " + e.getCustName(),
+                    e.getNIC(),
+                    e.getMobileNumber(),
+                    e.getCustAddress() + " " + e.getCity()
+                };
+                defaultTableModel.addRow(rows);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
+        }
+
+    }
+
+    private void searchCustomer() {
+        try {
+            String id = (String) tblData.getValueAt(tblData.getSelectedRow(), 0);
+
+            CustomerDto customerDto = customerController.searchCustomer(id);
+
+            if (customerDto != null) {
+                txtID.setText(customerDto.getCustID());
+                txtTitle.setText(customerDto.getCustTitle());
+                txtName.setText(customerDto.getCustName());
+                txtNIC.setText(customerDto.getNIC());
+                txtDOB.setText(customerDto.getDOB());
+                txtContact.setText(customerDto.getMobileNumber());
+                txtAddress.setText(customerDto.getCustAddress());
+                txtCity.setText(customerDto.getCity());
+                txtProvince.setText(customerDto.getProvince());
+                txtZip.setText(customerDto.getPostalCode());
+            } else {
+                JOptionPane.showMessageDialog(this, "Customer Not found");
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
+        }
+    }
+
+    private void UpdateCustomer() {
+        try {
+            CustomerDto customerDto = new CustomerDto(
+                    txtID.getText(),
+                    txtTitle.getText(),
+                    txtName.getText(),
+                    txtNIC.getText(),
+                    txtDOB.getText(),
+                    txtContact.getText(),
+                    txtAddress.getText(),
+                    txtCity.getText(),
+                    txtProvince.getText(),
+                    txtZip.getText());
+
+            String result = customerController.updateCustomer(customerDto);
+            JOptionPane.showMessageDialog(this, result);
+            clear();
+            loadTable();
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
+        }
+    }
+
+    private void clear() {
+        txtID.setText("");
+        txtTitle.setText("");
+        txtName.setText("");
+        txtNIC.setText("");
+        txtDOB.setText("");
+        txtContact.setText("");
+        txtAddress.setText("");
+        txtCity.setText("");
+        txtProvince.setText("");
+        txtZip.setText("");
+    }
+
+    private void deleteCustomer() {
+        try {
+            CustomerDto customerDto = new CustomerDto();
+            customerDto.setCustID(txtID.getText());
+            String result = customerController.deleteCustomer(customerDto);
+            JOptionPane.showMessageDialog(this, result);
+            clear();
+            loadTable();
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }
 }

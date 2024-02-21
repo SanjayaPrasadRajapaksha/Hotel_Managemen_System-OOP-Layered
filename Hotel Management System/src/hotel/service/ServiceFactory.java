@@ -5,6 +5,7 @@
 package hotel.service;
 
 import hotel.service.custom.impl.CustomerServiceImpl;
+import hotel.service.custom.impl.RoomCategoryServiceImpl;
 
 /**
  *
@@ -26,7 +27,7 @@ public class ServiceFactory {
             case CUSTOMER:
                 return new CustomerServiceImpl();
             case ROOM_CATEGORY:
-                return null;
+                return new RoomCategoryServiceImpl();
 
             default:
                 return null;

@@ -49,7 +49,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -88,33 +88,28 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="btnUpdate" min="-2" pref="95" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnUpdate" min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="btnDelete" min="-2" pref="109" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txtZip" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtProvince" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtCity" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtContact" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtNIC" alignment="0" pref="249" max="32767" attributes="0"/>
-                              <Component id="txtName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtDOB" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtTitle" alignment="0" pref="120" max="32767" attributes="0"/>
-                                  <Component id="txtID" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtZip" alignment="0" pref="249" max="32767" attributes="0"/>
+                          <Component id="txtProvince" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtCity" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtAddress" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtContact" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtID" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="txtTitle" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
+                          <Component id="txtName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtNIC" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtDOB" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="428" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" min="-2" pref="774" max="-2" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -185,7 +180,7 @@
                       </Group>
                       <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -194,7 +189,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="20" style="1"/>
+              <Font name="Segoe UI" size="24" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Manage Customer"/>
@@ -353,6 +348,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Update"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDelete">
           <Properties>
@@ -361,6 +359,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Delete"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -380,6 +381,9 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblDataMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -5,12 +5,14 @@
 package hotel.repository;
 
 import hotel.repository.custom.impl.CustomerRepositoryImpl;
+import hotel.repository.custom.impl.RoomCategoryRepositoryImpl;
 
 /**
  *
  * @author Sanjaya
  */
 public class RepositoryFactory {
+
     private static RepositoryFactory repositoryFactory;
 
     public RepositoryFactory() {
@@ -25,17 +27,17 @@ public class RepositoryFactory {
 
     public SuperRepository getRepository(RepositoryType repositoryType) {
         switch (repositoryType) {
-         
+
             case CUSTOMER:
                 return new CustomerRepositoryImpl();
             case ROOM_CATEGORY:
-                    return null;
+                return new RoomCategoryRepositoryImpl();
             default:
                 return null;
         }
     }
 
     public enum RepositoryType {
-       CUSTOMER,ROOM_CATEGORY
+        CUSTOMER, ROOM_CATEGORY
     }
 }
