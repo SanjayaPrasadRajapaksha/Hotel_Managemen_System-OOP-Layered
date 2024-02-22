@@ -55,16 +55,16 @@ public class RoomCategoryRepositoryImpl implements RoomCategoryRepository {
     @Override
     public List<RoomCategoryEntity> getAll() throws Exception {
         ResultSet resultSet = CrudUtil.executeQuery("SELECT * FROM Room_Category");
-        List<RoomCategoryEntity> RoomCategoryEntities = new ArrayList<>();
+        List<RoomCategoryEntity> roomCategoryEntities = new ArrayList<>();
         while (resultSet.next()) {
-            RoomCategoryEntities.add(new RoomCategoryEntity(
+            roomCategoryEntities.add(new RoomCategoryEntity(
                     resultSet.getString("CategoryID"),
                     resultSet.getString("PackageName"),
                     resultSet.getDouble("PackagePrice")
             ));
 
         }
-        return RoomCategoryEntities;
+        return roomCategoryEntities;
     }
 
 }

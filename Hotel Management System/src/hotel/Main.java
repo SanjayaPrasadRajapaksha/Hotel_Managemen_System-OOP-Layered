@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args) {
        // new CustomerView().setVisible(true);
-        //new RoomCategoryView().setVisible(true);
-        new RoomView().setVisible(true);
+       //new RoomCategoryView().setVisible(true);
+      new RoomView().setVisible(true);
     }
 }

@@ -66,17 +66,17 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
 
     @Override
     public List<RoomCategoryDto> getAll() throws Exception {
-        List<RoomCategoryDto> RoomCategoryDtos = new ArrayList<>();
-        List<RoomCategoryEntity> RoomCategoryEntities = roomCategoryRepository.getAll();
+        List<RoomCategoryDto> roomCategoryDtos = new ArrayList<>();
+        List<RoomCategoryEntity> roomCategoryEntities = roomCategoryRepository.getAll();
 
-        for (RoomCategoryEntity e : RoomCategoryEntities) {
-            RoomCategoryDtos.add(new RoomCategoryDto(
+        for (RoomCategoryEntity e : roomCategoryEntities) {
+            roomCategoryDtos.add(new RoomCategoryDto(
                     e.getCategoryID(),
                     e.getPackageName(),
                     e.getPackagePrice()
             ));
         }
-        return RoomCategoryDtos;
+        return roomCategoryDtos;
 
     }
 

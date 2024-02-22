@@ -21,7 +21,7 @@ import lombok.ToString;
 @ToString
 public class RoomCategoryEntity {
 
-    private String CategoryID;
-    private String PackageName;
-    private Double PackagePrice;
+    private String categoryID;
+    private String packageName;
+    private Double packagePrice;
 }

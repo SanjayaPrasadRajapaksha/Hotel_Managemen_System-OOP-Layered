@@ -4,17 +4,26 @@
  */
 package hotel.view;
 
+import hotel.controller.RoomController;
+import hotel.dto.RoomDto;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Sanjaya
  */
 public class RoomView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RoomView
-     */
+    private RoomController roomController;
+
     public RoomView() {
+        roomController = new RoomController();
         initComponents();
+        loadTable();
     }
 
     /**
@@ -84,13 +93,28 @@ public class RoomView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDataMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblData);
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
@@ -178,12 +202,24 @@ public class RoomView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+      deleteRoom();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtCategoryIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoryIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCategoryIDActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        SaveRoom();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void tblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDataMouseClicked
+        seachRoom();
+    }//GEN-LAST:event_tblDataMouseClicked
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        updateRoom();
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,4 +272,107 @@ public class RoomView extends javax.swing.JFrame {
     private javax.swing.JTextField txtQty;
     private javax.swing.JTextField txtRoomID;
     // End of variables declaration//GEN-END:variables
+
+    private void SaveRoom() {
+        try {
+            RoomDto roomDto = new RoomDto(txtRoomID.getText(), txtCategoryID.getText(), Integer.parseInt(txtQty.getText()));
+
+            String result = roomController.save(roomDto);
+            JOptionPane.showMessageDialog(this, result);
+            clear();
+            loadTable();
+        } catch (Exception ex) {
+            Logger.getLogger(RoomCategoryView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void loadTable() {
+
+        try {
+            String[] colums = {"Room ID", "Category ID", "Quantity"};
+            DefaultTableModel defaultTableModel = new DefaultTableModel(colums, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+
+            };
+            tblData.setModel(defaultTableModel);
+
+            List<RoomDto> dtos = roomController.getAll();
+
+            for (RoomDto e : dtos) {
+                Object rows[] = {
+                    e.getRoomID(),
+                    e.getCategoryID(),
+                    e.getQuantity(),};
+                defaultTableModel.addRow(rows);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RoomCategoryView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
+
+    private void seachRoom() {
+        try {
+            String id = (String) tblData.getValueAt(tblData.getSelectedRow(), 0);
+
+            RoomDto roomDto = roomController.get(id);
+
+            if (roomDto != null) {
+                txtRoomID.setText(roomDto.getRoomID());
+                txtCategoryID.setText(roomDto.getCategoryID());
+                txtQty.setText(roomDto.getQuantity().toString());
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Room Not found");
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
+        }
+    }
+
+    private void updateRoom() {
+        try {
+            RoomDto roomDto = new RoomDto(
+                    txtRoomID.getText(),
+                    txtCategoryID.getText(),
+                    Integer.parseInt(txtQty.getText())
+            );
+
+            String result = roomController.update(roomDto);
+            JOptionPane.showMessageDialog(this, result);
+            clear();
+            loadTable();
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+
+        }
+    }
+
+    private void clear() {
+        txtRoomID.setText("");
+        txtCategoryID.setText("");
+        txtQty.setText("");
+    }
+
+    private void deleteRoom() {
+           try {
+            RoomDto roomDto = new RoomDto();
+            roomDto.setRoomID(txtRoomID.getText());
+            String result = roomController.delete(roomDto);
+            JOptionPane.showMessageDialog(this, result);
+            clear();
+            loadTable();
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }
 }

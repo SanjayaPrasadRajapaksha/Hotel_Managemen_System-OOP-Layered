@@ -14,7 +14,8 @@ import java.sql.ResultSet;
  * @author Sanjaya
  */
 public class CrudUtil {
-     public static PreparedStatement getPreparedStatement(String sql, Object... args) throws Exception {
+
+    public static PreparedStatement getPreparedStatement(String sql, Object... args) throws Exception {
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 

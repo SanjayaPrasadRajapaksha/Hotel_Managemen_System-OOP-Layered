@@ -10,21 +10,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 /**
  *
  * @author Sanjaya
  */
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
-public class RoomCategoryDto {
+@ToString   
+public class RoomDto {
 
-    private String categoryID;
-    private String packageName;
-    private Double packagePrice;
+    private String roomID;
+    private String CategoryID;
+    private Integer Quantity;
 
 }

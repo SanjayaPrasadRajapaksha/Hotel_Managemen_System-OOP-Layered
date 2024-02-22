@@ -6,6 +6,7 @@ package hotel.repository;
 
 import hotel.repository.custom.impl.CustomerRepositoryImpl;
 import hotel.repository.custom.impl.RoomCategoryRepositoryImpl;
+import hotel.repository.custom.impl.RoomRepositoryImpl;
 
 /**
  *
@@ -32,12 +33,14 @@ public class RepositoryFactory {
                 return new CustomerRepositoryImpl();
             case ROOM_CATEGORY:
                 return new RoomCategoryRepositoryImpl();
+            case ROOM:
+                return new RoomRepositoryImpl();
             default:
                 return null;
         }
     }
 
     public enum RepositoryType {
-        CUSTOMER, ROOM_CATEGORY
+        CUSTOMER, ROOM_CATEGORY, ROOM
     }
 }
