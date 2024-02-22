@@ -414,7 +414,7 @@ public class CustomerView extends javax.swing.JFrame {
                     e.getCustTitle() + " " + e.getCustName(),
                     e.getNIC(),
                     e.getMobileNumber(),
-                    e.getCustAddress() + " " + e.getCity()
+                    e.getCustAddress() + " , " + e.getCity()
                 };
                 defaultTableModel.addRow(rows);
             }

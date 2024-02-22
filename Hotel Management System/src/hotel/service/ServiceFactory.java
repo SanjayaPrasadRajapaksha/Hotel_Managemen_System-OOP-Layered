@@ -5,6 +5,7 @@
 package hotel.service;
 
 import hotel.service.custom.impl.CustomerServiceImpl;
+import hotel.service.custom.impl.ReservationServiceImpl;
 import hotel.service.custom.impl.RoomCategoryServiceImpl;
 import hotel.service.custom.impl.RoomServiceImpl;
 
@@ -31,12 +32,14 @@ public class ServiceFactory {
                 return new RoomCategoryServiceImpl();
             case ROOM:
                 return new RoomServiceImpl();
+            case RESERVATION:
+                return new ReservationServiceImpl();
             default:
                 return null;
         }
     }
 
     public enum ServiceType {
-        CUSTOMER, ROOM_CATEGORY, ROOM
+        CUSTOMER, ROOM_CATEGORY, ROOM,RESERVATION
     }
 }

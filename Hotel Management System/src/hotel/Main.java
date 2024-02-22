@@ -5,9 +5,9 @@
 package hotel;
 
 import hotel.view.CustomerView;
+import hotel.view.ReservationView;
 import hotel.view.RoomCategoryView;
 import hotel.view.RoomView;
-
 
 /**
  *
@@ -16,8 +16,10 @@ import hotel.view.RoomView;
 public class Main {
 
     public static void main(String[] args) {
-       // new CustomerView().setVisible(true);
-       //new RoomCategoryView().setVisible(true);
-      new RoomView().setVisible(true);
+
+         new CustomerView().setVisible(true);
+        new RoomCategoryView().setVisible(true);
+ new RoomView().setVisible(true);
+        new ReservationView().setVisible(true);
     }
 }

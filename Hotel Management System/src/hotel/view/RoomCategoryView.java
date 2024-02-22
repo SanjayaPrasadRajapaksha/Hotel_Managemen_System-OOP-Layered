@@ -316,7 +316,7 @@ public class RoomCategoryView extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomCategoryView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
 
         }
@@ -335,7 +335,7 @@ public class RoomCategoryView extends javax.swing.JFrame {
             clear();
             loadTable();
         } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomCategoryView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
 
         }
@@ -356,7 +356,7 @@ public class RoomCategoryView extends javax.swing.JFrame {
             clear();
             loadTable();
         } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomCategoryView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }

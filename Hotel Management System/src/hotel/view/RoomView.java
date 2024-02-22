@@ -191,7 +191,7 @@ public class RoomView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,7 +282,7 @@ public class RoomView extends javax.swing.JFrame {
             clear();
             loadTable();
         } catch (Exception ex) {
-            Logger.getLogger(RoomCategoryView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
@@ -310,7 +310,7 @@ public class RoomView extends javax.swing.JFrame {
                 defaultTableModel.addRow(rows);
             }
         } catch (Exception ex) {
-            Logger.getLogger(RoomCategoryView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
@@ -331,7 +331,7 @@ public class RoomView extends javax.swing.JFrame {
 
             }
         } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
 
         }
@@ -350,7 +350,7 @@ public class RoomView extends javax.swing.JFrame {
             clear();
             loadTable();
         } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
 
         }
@@ -371,7 +371,7 @@ public class RoomView extends javax.swing.JFrame {
             clear();
             loadTable();
         } catch (Exception ex) {
-            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RoomView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }
