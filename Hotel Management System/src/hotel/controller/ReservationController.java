@@ -22,12 +22,11 @@ public class ReservationController {
     }
 
     public ReservationDto get(String id) throws Exception {
-     return reservationService.get(id);
+        return reservationService.get(id);
     }
 
     public String Cancel(ReservationDto reservationDto) throws Exception {
-      return reservationService.cancel(reservationDto);
+        return reservationService.cancel(reservationDto);
     }
-
 
 }

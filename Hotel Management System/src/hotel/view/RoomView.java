@@ -198,7 +198,7 @@ public class RoomView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-      deleteRoom();
+        deleteRoom();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtCategoryIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoryIDActionPerformed
@@ -359,7 +359,7 @@ public class RoomView extends javax.swing.JFrame {
     }
 
     private void deleteRoom() {
-           try {
+        try {
             RoomDto roomDto = new RoomDto();
             roomDto.setRoomID(txtRoomID.getText());
             String result = roomController.delete(roomDto);

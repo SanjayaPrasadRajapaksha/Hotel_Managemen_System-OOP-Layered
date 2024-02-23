@@ -22,7 +22,7 @@ import lombok.ToString;
 public class RoomEntity {
 
     private String roomID;
-    private String CategoryID;
-    private Integer Quantity;
+    private String categoryID;
+    private Integer quantity;
 
 }

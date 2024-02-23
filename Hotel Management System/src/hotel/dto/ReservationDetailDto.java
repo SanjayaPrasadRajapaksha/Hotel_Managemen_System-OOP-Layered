@@ -20,6 +20,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ReservationDetailDto {
+
     private String reservationID;
     private String roomID;
     private Integer quantity;

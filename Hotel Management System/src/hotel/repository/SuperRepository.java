@@ -9,5 +9,5 @@ package hotel.repository;
  * @author Sanjaya
  */
 public interface SuperRepository {
-    
+
 }

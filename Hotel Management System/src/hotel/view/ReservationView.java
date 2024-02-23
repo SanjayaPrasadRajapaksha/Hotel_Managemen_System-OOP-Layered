@@ -109,17 +109,27 @@ public class ReservationView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Reservation ID :");
 
+        txtReservationID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         txtCustID.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtCustID.setText("Cust ID :");
+
+        txtCustomerID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setText("Room ID :");
 
+        txtRoomID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setText("Quantity :");
 
+        txtQuantity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel7.setText("Discount :");
+
+        txtDiscount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btnAdd1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAdd1.setText("Add");
@@ -357,7 +367,7 @@ public class ReservationView extends javax.swing.JFrame {
 
             CustomerDto customerDto = customerController.searchCustomer(custID);
             if (customerDto != null) {
-                lblCustData.setText(customerDto.getCustTitle() + " " +customerDto.getCustName()+" | " + customerDto.getNIC() + " | " + customerDto.getMobileNumber() + " | " + customerDto.getCustAddress() + " , " + customerDto.getCity());
+                lblCustData.setText(customerDto.getCustTitle() + " " + customerDto.getCustName() + " | " + customerDto.getNIC() + " | " + customerDto.getMobileNumber() + " | " + customerDto.getCustAddress() + " , " + customerDto.getCity());
             } else {
                 JOptionPane.showMessageDialog(this, "Customer Not Found");
             }

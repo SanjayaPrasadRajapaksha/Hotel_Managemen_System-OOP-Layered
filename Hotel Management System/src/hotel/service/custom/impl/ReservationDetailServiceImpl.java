@@ -16,12 +16,13 @@ import java.util.List;
  *
  * @author Sanjaya
  */
-public class ReservationDetailServiceImpl implements ReservationDetailService{
+public class ReservationDetailServiceImpl implements ReservationDetailService {
 
-     private ReservationDetailRepository reservationDetailRepository = (ReservationDetailRepository) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.RESERVATION_DETAIL);
+    private ReservationDetailRepository reservationDetailRepository = (ReservationDetailRepository) RepositoryFactory.getInstance().getRepository(RepositoryFactory.RepositoryType.RESERVATION_DETAIL);
+
     @Override
     public List<ReservationDetailDto> getAll() throws Exception {
-       List<ReservationDetailDto> reservationDetailDtos = new ArrayList<>();
+        List<ReservationDetailDto> reservationDetailDtos = new ArrayList<>();
         List<ReservationDetailEntity> ReservationDetailEntities = reservationDetailRepository.getAll();
 
         for (ReservationDetailEntity e : ReservationDetailEntities) {
@@ -30,12 +31,11 @@ public class ReservationDetailServiceImpl implements ReservationDetailService{
                     e.getRoomID(),
                     e.getReservationQty(),
                     e.getDiscount()
-                  )
+            )
             );
         }
 
         return reservationDetailDtos;
     }
-    
-  
+
 }

@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author Sanjaya
  */
-public interface ReservationDetailService extends SuperService{
-    List<ReservationDetailDto> getAll()throws Exception;  
+public interface ReservationDetailService extends SuperService {
+
+    List<ReservationDetailDto> getAll() throws Exception;
 }

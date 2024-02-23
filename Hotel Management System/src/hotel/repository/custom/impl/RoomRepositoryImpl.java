@@ -34,7 +34,7 @@ public class RoomRepositoryImpl implements RoomRepository {
 
     @Override
     public boolean delete(RoomEntity t) throws Exception {
-       return CrudUtil.executeUpdate("DELETE FROM Room WHERE RoomID=?",
+        return CrudUtil.executeUpdate("DELETE FROM Room WHERE RoomID=?",
                 t.getCategoryID());
     }
 

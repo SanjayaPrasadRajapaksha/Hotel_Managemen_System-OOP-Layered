@@ -14,7 +14,6 @@ import lombok.ToString;
  *
  * @author Sanjaya
  */
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -26,6 +25,5 @@ public class ReservationEntity {
     private String reservationDate;
     private String cancellationDeadline;
     private String custID;
-    
 
 }

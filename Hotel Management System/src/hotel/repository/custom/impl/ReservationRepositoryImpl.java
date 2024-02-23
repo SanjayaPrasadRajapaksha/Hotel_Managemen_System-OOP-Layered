@@ -9,6 +9,7 @@ import hotel.repository.CrudUtil;
 import hotel.repository.custom.ReservationRepository;
 import java.util.List;
 import java.sql.ResultSet;
+
 /**
  *
  * @author Sanjaya
@@ -32,7 +33,7 @@ public class ReservationRepositoryImpl implements ReservationRepository {
 
     @Override
     public boolean delete(ReservationEntity t) throws Exception {
-     return CrudUtil.executeUpdate("DELETE FROM Reservation WHERE ReservationID=?",
+        return CrudUtil.executeUpdate("DELETE FROM Reservation WHERE ReservationID=?",
                 t.getReservationID());
     }
 

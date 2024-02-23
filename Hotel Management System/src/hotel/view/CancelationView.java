@@ -357,7 +357,7 @@ public class CancelationView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustDataActionPerformed
 
     private void btnCancelReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelReservationActionPerformed
-       CancelReservation();
+        CancelReservation();
     }//GEN-LAST:event_btnCancelReservationActionPerformed
 
     /**
@@ -546,7 +546,7 @@ public class CancelationView extends javax.swing.JFrame {
     }
 
     private void CancelReservation() {
-      try {
+        try {
 
             ReservationDto reservationDto = new ReservationDto();
             reservationDto.setReservationID(txtReservationID.getText());

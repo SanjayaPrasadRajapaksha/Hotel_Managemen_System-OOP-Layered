@@ -11,6 +11,6 @@ import hotel.repository.CrudRepository;
  *
  * @author Sanjaya
  */
-public interface RoomRepository extends CrudRepository<RoomEntity,String> {
-    
+public interface RoomRepository extends CrudRepository<RoomEntity, String> {
+
 }

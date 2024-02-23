@@ -18,11 +18,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString   
+@ToString
 public class RoomDto {
 
     private String roomID;
-    private String CategoryID;
-    private Integer Quantity;
+    private String categoryID;
+    private Integer quantity;
 
 }

@@ -11,10 +11,11 @@ import hotel.service.SuperService;
  *
  * @author Sanjaya
  */
-public interface ReservationService extends SuperService{
-    
+public interface ReservationService extends SuperService {
+
     String book(ReservationDto reservationDto) throws Exception;
+
     ReservationDto get(String id) throws Exception;
 
-    public String cancel(ReservationDto reservationDto)throws Exception;
+    public String cancel(ReservationDto reservationDto) throws Exception;
 }

@@ -4,7 +4,6 @@
  */
 package hotel.repository.custom;
 
-
 import hotel.entity.CustomerEntity;
 import hotel.repository.CrudRepository;
 
@@ -12,6 +11,6 @@ import hotel.repository.CrudRepository;
  *
  * @author Sanjaya
  */
-public interface CustomerRepository extends CrudRepository<CustomerEntity,String> {
-    
+public interface CustomerRepository extends CrudRepository<CustomerEntity, String> {
+
 }

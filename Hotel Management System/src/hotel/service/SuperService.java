@@ -9,5 +9,5 @@ package hotel.service;
  * @author Sanjaya
  */
 public interface SuperService {
-    
+
 }

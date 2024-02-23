@@ -40,7 +40,7 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
 
     @Override
     public String delete(RoomCategoryDto roomCategoryDto) throws Exception {
-     RoomCategoryEntity roomCategoryEntity = new RoomCategoryEntity();
+        RoomCategoryEntity roomCategoryEntity = new RoomCategoryEntity();
         roomCategoryEntity.setCategoryID(roomCategoryDto.getCategoryID());
         if (roomCategoryRepository.delete(roomCategoryEntity)) {
             return "SuccessFully Deleted";
@@ -55,7 +55,7 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
         if (roomCategoryEntity != null) {
             return new RoomCategoryDto(
                     roomCategoryEntity.getCategoryID(),
-                    roomCategoryEntity.getCategoryID(),
+                    roomCategoryEntity.getPackageName(),
                     roomCategoryEntity.getPackagePrice()
             );
 

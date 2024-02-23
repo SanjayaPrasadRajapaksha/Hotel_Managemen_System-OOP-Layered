@@ -109,6 +109,12 @@ public class RoomCategoryView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblData);
 
+        txtID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtPackageName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtPackagePrice.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(

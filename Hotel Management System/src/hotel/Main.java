@@ -17,16 +17,11 @@ import hotel.view.RoomView;
 public class Main {
 
     public static void main(String[] args) {
-        //     CustomerView customerView = new CustomerView();
-        //   customerView.setDefaultCloseOperation(2);
-        //    customerView.setVisible(true);
 
-        //  RoomCategoryView roomCategoryView = new RoomCategoryView();
-        //    roomCategoryView.setDefaultCloseOperation(2);
-        //     roomCategoryView.setVisible(true);
-        //    new RoomView().setVisible(true);
-        //new ReservationView().setVisible(true);
-        new CancelationView().setVisible(true);
+        LoginForm loginForm = new LoginForm();
+        loginForm.setDefaultCloseOperation(2);
+        loginForm.setLocationRelativeTo(null);
+        loginForm.setVisible(true);
 
     }
 }
