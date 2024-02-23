@@ -23,6 +23,9 @@ import lombok.ToString;
 public class ReservationDto {
 
     private String reservationID;
+    private String reservationDate;
+    private String cancellationDeadline;
     private String custID;
+
     List<ReservationDetailDto> resevationDetailDtos;
 }

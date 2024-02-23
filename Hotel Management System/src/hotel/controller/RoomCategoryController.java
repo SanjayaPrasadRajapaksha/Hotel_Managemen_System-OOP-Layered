@@ -23,19 +23,19 @@ public class RoomCategoryController {
     }
 
     public List<RoomCategoryDto> getAll() throws Exception {
-       return roomCategoryService.getAll();
+        return roomCategoryService.getAll();
     }
 
     public RoomCategoryDto get(String id) throws Exception {
-      return roomCategoryService.get(id);
+        return roomCategoryService.get(id);
     }
 
     public String update(RoomCategoryDto roomCategoryDto) throws Exception {
-      return roomCategoryService.update(roomCategoryDto);
+        return roomCategoryService.update(roomCategoryDto);
     }
 
     public String delete(RoomCategoryDto roomCategoryDto) throws Exception {
-       return roomCategoryService.delete(roomCategoryDto);
+        return roomCategoryService.delete(roomCategoryDto);
     }
 
 }

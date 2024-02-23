@@ -52,22 +52,19 @@ public class RoomCategoryView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Room Category");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 0, 51));
         jLabel2.setText("CategoryI D : ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 0, 51));
         jLabel3.setText("Package Name :");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 0, 51));
         jLabel4.setText("Package Price :");
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

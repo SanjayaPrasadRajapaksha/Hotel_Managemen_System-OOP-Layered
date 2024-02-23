@@ -34,10 +34,8 @@ public class ReservationServiceImpl implements ReservationService {
             connection.setAutoCommit(false);
 
             ReservationEntity reservationEntity = new ReservationEntity();
-                  reservationEntity.setReservationID( reservationDto.getReservationID());
-                  reservationEntity.setCustID(reservationDto.getCustID()); 
-                   
-       
+            reservationEntity.setReservationID(reservationDto.getReservationID());
+            reservationEntity.setCustID(reservationDto.getCustID());
 
             if (reservationRepository.save(reservationEntity)) {
 
@@ -79,6 +77,69 @@ public class ReservationServiceImpl implements ReservationService {
             } else {
                 connection.rollback();
                 return "Reservation Save Error";
+            }
+
+        } catch (Exception e) {
+            connection.rollback();
+            e.printStackTrace();
+            throw e;
+        } finally {
+            connection.setAutoCommit(true);
+        }
+    }
+
+    @Override
+    public ReservationDto get(String id) throws Exception {
+        ReservationEntity reservationEntity = reservationRepository.get(id);
+
+        if (reservationEntity != null) {
+            ReservationDto reservationDto = new ReservationDto();
+            reservationDto.setReservationID(reservationEntity.getReservationID());
+            reservationDto.setReservationDate(reservationEntity.getReservationDate());
+            reservationDto.setCancellationDeadline(reservationEntity.getCancellationDeadline());
+            reservationDto.setCustID(reservationEntity.getCustID());
+
+            return reservationDto;
+
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public String cancel(ReservationDto reservationDto) throws Exception {
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+
+            ReservationEntity reservationEntity = new ReservationEntity();
+            reservationEntity.setReservationID(reservationDto.getReservationID());
+
+            if (reservationRepository.delete(reservationEntity)) {
+
+                boolean isRoomUpdated = true;
+                for (ReservationDetailDto e : reservationDto.getResevationDetailDtos()) {
+                    RoomEntity roomEntity = roomRepository.get(e.getRoomID());
+                    if (roomEntity != null) {
+                        roomEntity.setQuantity(roomEntity.getQuantity() + e.getQuantity());
+
+                        if (!roomRepository.update(roomEntity)) {
+                            isRoomUpdated = false;
+                        }
+                    }
+                }
+
+                if (isRoomUpdated) {
+                    connection.commit();
+                    return "Success";
+                } else {
+                    connection.rollback();
+                    return "Reservation Update Error";
+                }
+
+            } else {
+                connection.rollback();
+                return "Reservation Delete Error";
             }
 
         } catch (Exception e) {

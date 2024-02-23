@@ -82,14 +82,13 @@ public class CustomerView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 204, 204));
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Customer");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 0, 51));
         jLabel2.setText("Title :");
 
         txtID.addActionListener(new java.awt.event.ActionListener() {
@@ -99,39 +98,30 @@ public class CustomerView extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 0, 51));
         jLabel3.setText("Customer ID :");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 0, 51));
         jLabel4.setText("Name :");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 0, 51));
         jLabel5.setText("NIC :");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 0, 51));
         jLabel6.setText("DOB:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 0, 51));
         jLabel7.setText("Contact :");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 0, 51));
         jLabel8.setText("Address :");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 0, 51));
         jLabel9.setText("City :");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(204, 0, 51));
         jLabel10.setText("Province :");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 0, 51));
         jLabel11.setText("Zip :");
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

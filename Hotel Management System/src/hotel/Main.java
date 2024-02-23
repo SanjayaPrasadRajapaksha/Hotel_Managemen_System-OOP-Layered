@@ -4,6 +4,7 @@
  */
 package hotel;
 
+import hotel.view.CancelationView;
 import hotel.view.CustomerView;
 import hotel.view.ReservationView;
 import hotel.view.RoomCategoryView;
@@ -16,10 +17,16 @@ import hotel.view.RoomView;
 public class Main {
 
     public static void main(String[] args) {
+        //     CustomerView customerView = new CustomerView();
+        //   customerView.setDefaultCloseOperation(2);
+        //    customerView.setVisible(true);
 
-         new CustomerView().setVisible(true);
-        new RoomCategoryView().setVisible(true);
- new RoomView().setVisible(true);
-        new ReservationView().setVisible(true);
+        //  RoomCategoryView roomCategoryView = new RoomCategoryView();
+        //    roomCategoryView.setDefaultCloseOperation(2);
+        //     roomCategoryView.setVisible(true);
+        //    new RoomView().setVisible(true);
+        //new ReservationView().setVisible(true);
+        new CancelationView().setVisible(true);
+
     }
 }

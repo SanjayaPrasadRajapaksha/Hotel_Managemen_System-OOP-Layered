@@ -14,4 +14,7 @@ import hotel.service.SuperService;
 public interface ReservationService extends SuperService{
     
     String book(ReservationDto reservationDto) throws Exception;
+    ReservationDto get(String id) throws Exception;
+
+    public String cancel(ReservationDto reservationDto)throws Exception;
 }

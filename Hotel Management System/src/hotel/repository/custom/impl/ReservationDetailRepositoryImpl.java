@@ -7,7 +7,9 @@ package hotel.repository.custom.impl;
 import hotel.entity.ReservationDetailEntity;
 import hotel.repository.CrudUtil;
 import hotel.repository.custom.ReservationDetailRepository;
+import java.util.ArrayList;
 import java.util.List;
+import java.sql.ResultSet;
 
 /**
  *
@@ -42,7 +44,18 @@ public class ReservationDetailRepositoryImpl implements ReservationDetailReposit
 
     @Override
     public List<ReservationDetailEntity> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ResultSet resultSet = CrudUtil.executeQuery("SELECT * FROM Reservation_Detail");
+        List<ReservationDetailEntity> reservationDetailEntities = new ArrayList<>();
+        while (resultSet.next()) {
+            reservationDetailEntities.add(new ReservationDetailEntity(
+                    resultSet.getString("ReservationID"),
+                    resultSet.getString("RoomID"),
+                    resultSet.getInt("ReservationQty"),
+                    resultSet.getInt("Discount")
+            ));
+
+        }
+        return reservationDetailEntities;
     }
 
 }

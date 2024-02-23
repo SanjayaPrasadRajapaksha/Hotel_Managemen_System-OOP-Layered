@@ -62,7 +62,7 @@ public class ReservationView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtQuantity = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtDIscount = new javax.swing.JTextField();
+        txtDiscount = new javax.swing.JTextField();
         btnAdd1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
@@ -100,7 +100,7 @@ public class ReservationView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 0));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -155,6 +155,7 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
 
+        btnSearchCustomer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSearchCustomer.setText("Search");
         btnSearchCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +163,7 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
 
+        btnSearchRoom.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSearchRoom.setText("Search");
         btnSearchRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,7 +209,7 @@ public class ReservationView extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDIscount, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(55, 55, 55)
                                 .addComponent(btnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblRoomData)
@@ -244,7 +246,7 @@ public class ReservationView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(txtDIscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdd1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,16 +331,12 @@ public class ReservationView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel lblCustData;
@@ -346,10 +344,9 @@ public class ReservationView extends javax.swing.JFrame {
     private javax.swing.JTable tblData;
     private javax.swing.JLabel txtCustID;
     private javax.swing.JTextField txtCustomerID;
-    private javax.swing.JTextField txtDIscount;
+    private javax.swing.JTextField txtDiscount;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtReservationID;
-    private javax.swing.JTextField txtReservationID2;
     private javax.swing.JTextField txtRoomID;
     // End of variables declaration//GEN-END:variables
 
@@ -360,7 +357,7 @@ public class ReservationView extends javax.swing.JFrame {
 
             CustomerDto customerDto = customerController.searchCustomer(custID);
             if (customerDto != null) {
-                lblCustData.setText(customerDto.getCustTitle() + " " + customerDto.getNIC() + " | " + customerDto.getMobileNumber() + " | " + customerDto.getCustAddress() + " , " + customerDto.getCity());
+                lblCustData.setText(customerDto.getCustTitle() + " " +customerDto.getCustName()+" | " + customerDto.getNIC() + " | " + customerDto.getMobileNumber() + " | " + customerDto.getCustAddress() + " , " + customerDto.getCity());
             } else {
                 JOptionPane.showMessageDialog(this, "Customer Not Found");
             }
@@ -393,7 +390,7 @@ public class ReservationView extends javax.swing.JFrame {
 
         reservationDetailDto.setRoomID(txtRoomID.getText());
         reservationDetailDto.setQuantity(Integer.parseInt(txtQuantity.getText()));
-        reservationDetailDto.setDiscount(Integer.parseInt(txtDIscount.getText()));
+        reservationDetailDto.setDiscount(Integer.parseInt(txtDiscount.getText()));
         reservationDetailDtos.add(reservationDetailDto);
 
         Object[] rowData = {reservationDetailDto.getRoomID(), reservationDetailDto.getQuantity(), reservationDetailDto.getDiscount()};
@@ -416,16 +413,16 @@ public class ReservationView extends javax.swing.JFrame {
     private void clear() {
         txtRoomID.setText("");
         txtQuantity.setText("");
-        txtDIscount.setText("");
+        txtDiscount.setText("");
     }
 
     private void book() {
         try {
 
-            ReservationDto reservationDto = new ReservationDto(
-                    txtReservationID.getText(),
-                    txtCustomerID.getText(),
-                    reservationDetailDtos);
+            ReservationDto reservationDto = new ReservationDto();
+            reservationDto.setReservationID(txtReservationID.getText());
+            reservationDto.setCustID(txtCustomerID.getText());
+            reservationDto.setResevationDetailDtos(reservationDetailDtos);
 
             String resp = reservationController.book(reservationDto);
             JOptionPane.showMessageDialog(this, resp);
