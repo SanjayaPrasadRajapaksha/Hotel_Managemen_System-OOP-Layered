@@ -4,12 +4,6 @@
  */
 package hotel;
 
-import hotel.view.CancelationView;
-import hotel.view.CustomerView;
-import hotel.view.ReservationView;
-import hotel.view.RoomCategoryView;
-import hotel.view.RoomView;
-
 /**
  *
  * @author Sanjaya

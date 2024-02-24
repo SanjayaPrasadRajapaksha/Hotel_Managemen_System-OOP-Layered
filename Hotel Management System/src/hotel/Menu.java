@@ -121,9 +121,9 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(btnManageRoom)
                 .addGap(31, 31, 31)
                 .addComponent(btnManageRCategory)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(btnReservation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(btnCancelReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
         );

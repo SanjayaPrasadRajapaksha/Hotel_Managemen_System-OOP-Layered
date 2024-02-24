@@ -201,7 +201,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void login() {
         try {
-            String sql = "SELECT * FROM login";
+            String sql = "SELECT * FROM login_data";
             PreparedStatement statement = CONNECTION.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
             List<LoginAttribute> loginDt = new ArrayList<>();
