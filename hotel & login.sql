@@ -165,8 +165,6 @@ INSERT INTO Reservation_Detail (ReservationID, RoomID, ReservationQty, Discount)
 INSERT INTO Reservation_Detail (ReservationID, RoomID, ReservationQty, Discount) VALUES ('R019', 'RM019', 1, 0);
 INSERT INTO Reservation_Detail (ReservationID, RoomID, ReservationQty, Discount) VALUES ('R020', 'RM020', 1, 0);
 
-#*********************************************************************************************************************************************************************
-#*********************************************************************************************************************************************************************
 
 SELECT * FROM customer;
 SELECT * FROM Reservation;
@@ -179,6 +177,9 @@ desc Reservation;
 desc Room_Category;
 desc Room;
 desc Reservation_Detail;
+
+#*********************************************************************************************************************************************************************
+#*********************************************************************************************************************************************************************
 
 
 DROP DATABASE IF EXISTS login;
